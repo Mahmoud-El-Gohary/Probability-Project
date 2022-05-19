@@ -6,12 +6,12 @@ namespace MyApp {
 		public static void getData() {
 			Console.Clear();
 			string userInput = "";
-			// sort array
 			List<double> data = new List<double>();
 			while(true) {
 				Console.Write("Enter a number <q to exit>: ");
 				userInput = Console.ReadLine();
 				if(userInput == "q") {
+					data.Sort();
 					Console.WriteLine("\nThis is the values you entered...");
 					Console.Write("data = { ");
 					Console.Write(String.Join(", ", data));

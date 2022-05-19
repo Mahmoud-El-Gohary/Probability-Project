@@ -1,2 +1,2 @@
-# Pprobability-Project
+# Probability-Project
 This repo for Collage Probability Project

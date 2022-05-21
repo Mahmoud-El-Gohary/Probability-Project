@@ -6,6 +6,17 @@ namespace MyApp
 	class App
 	{
 		public static List<double> data = new List<double>();
+		public static List<double> tempData = new List<double>();
+		
+		public static void clearLists() {
+			data.Clear();
+			tempData.Clear();
+		}
+
+
+		public static void Median(List<double> arr) {
+			Q2(arr);
+		}
 
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
@@ -20,21 +31,38 @@ namespace MyApp
 		}
 
 		public static double Q1(List<double> arr) {
-			double Q1 = (arr.Count + 1) * .25;
-			int index = (int)Math.Round(Q1);
-			return arr[index-1];
+			double arrMedian = Q2(arr);
+			foreach (double element in data){
+				if(element <= arrMedian)
+					tempData.Add(element);
+				else
+					break;
+			} 
+			return Q2(tempData);
 		}
 
 		public static double Q2(List<double> arr) {
-			double Q2 = (arr.Count + 1) * .50;
-			int index = (int)Math.Round(Q2);
-			return arr[index-1];
+			if(arr.Count % 2 == 0) {	
+				double _50P = arr.Count *.50;
+				int index   = (int)Math.Round(_50P);
+				 return (arr[index-1]+arr[index])/2;
+
+			}else{
+				double _50P = arr.Count *.50;
+				int index   = (int)Math.Round(_50P);
+				return arr[index-1];
+			}
 		}
 
 		public static double Q3(List<double> arr) {
-			double Q3 = (arr.Count + 1) * .75;
-			int index = (int)Math.Round(Q3);
-			return arr[index-1];
+			double arrMedian = Q2(arr);
+			foreach (double element in data){
+				if(element >= arrMedian)
+					tempData.Add(element);
+				else
+					break;
+			} 
+			return Q2(tempData);;
 		}
 
 		public static void getData()
@@ -88,7 +116,9 @@ namespace MyApp
 				bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
 				if (Choice == 1)
 				{
+					
 					getData();
+					Median(data);
 					break;
 				}
 				else if (Choice == 2)

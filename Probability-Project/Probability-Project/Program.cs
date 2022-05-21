@@ -89,7 +89,6 @@ namespace MyApp
 				if (Choice == 1)
 				{
 					getData();
-					Console.WriteLine(data.Count);
 					break;
 				}
 				else if (Choice == 2)

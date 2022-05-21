@@ -7,31 +7,34 @@ namespace MyApp
 	{
 		public static List<double> data = new List<double>();
 
-		public static double P20(List<double> arr) {
-			double _20P = .2 * arr.Count;
-			int index = (int)Math.Round(_20P);
-			return arr[index];
-		}
-
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
 			return range; 
 
 		}
 
+		public static double P20(List<double> arr) {
+			double _20P = arr.Count *.20;
+			int index   = (int)Math.Round(_20P);
+			return arr[index-1];
+		}
+
 		public static double Q1(List<double> arr) {
 			double Q1 = (arr.Count + 1) * .25;
-			return Q1;
+			int index = (int)Math.Round(Q1);
+			return arr[index-1];
 		}
 
 		public static double Q2(List<double> arr) {
 			double Q2 = (arr.Count + 1) * .50;
-			return Q2;
+			int index = (int)Math.Round(Q2);
+			return arr[index-1];
 		}
 
 		public static double Q3(List<double> arr) {
 			double Q3 = (arr.Count + 1) * .75;
-			return Q3;
+			int index = (int)Math.Round(Q3);
+			return arr[index-1];
 		}
 
 		public static void getData()
@@ -86,6 +89,7 @@ namespace MyApp
 				if (Choice == 1)
 				{
 					getData();
+					Console.WriteLine(data.Count);
 					break;
 				}
 				else if (Choice == 2)

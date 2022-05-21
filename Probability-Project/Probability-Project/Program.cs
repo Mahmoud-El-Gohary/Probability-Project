@@ -7,6 +7,12 @@ namespace MyApp
 	{
 		public static List<double> data = new List<double>();
 
+		public static double P20(List<double> arr) {
+			double _20P = .2 * arr.Count;
+			int index = (int)Math.Round(_20P);
+			return arr[index];
+		}
+
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
 			return range; 
@@ -90,6 +96,7 @@ namespace MyApp
 				else if (Choice == 3)
 				{
 					getData();
+					Console.WriteLine("P20: {0}",P20(data));
 					break;
 				}
 				else if (Choice == 4)
@@ -107,7 +114,7 @@ namespace MyApp
 				else if (Choice == 6)
 				{
 					getData();
-					Console.WriteLine("Q2: {0}",Q3(data));
+					Console.WriteLine("Q3: {0}",Q3(data));
 					break;
 				}
 				else if (Choice == 7)
@@ -151,6 +158,6 @@ namespace MyApp
 		- Q1     ----> <DONE>
 		- Q2     ----> <DONE>
 		- Q3     ----> <DONE>
-		- P20
+		- P20    ----> <DONE>
 		- Range  ----> <DONE>
 */

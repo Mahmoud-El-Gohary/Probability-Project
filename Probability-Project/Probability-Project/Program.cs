@@ -1,15 +1,37 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace MyApp
 {
 	class App
 	{
+		public static List<double> data = new List<double>();
+
+		public static double Range(List<double> arr) {
+			double range = data[arr.Count-1] - data[0];
+			return range; 
+
+		}
+
+		public static double Q1(List<double> arr) {
+			double Q1 = (arr.Count + 1) * .25;
+			return Q1;
+		}
+
+		public static double Q2(List<double> arr) {
+			double Q2 = (arr.Count + 1) * .50;
+			return Q2;
+		}
+
+		public static double Q3(List<double> arr) {
+			double Q3 = (arr.Count + 1) * .75;
+			return Q3;
+		}
+
 		public static void getData()
 		{
 			Console.Clear();
 			string userInput = "";
-			List<double> data = new List<double>();
 			while (true)
 			{
 				Console.Write("Enter a number <q to exit>: ");
@@ -73,21 +95,25 @@ namespace MyApp
 				else if (Choice == 4)
 				{
 					getData();
+					Console.WriteLine("Q1: {0}",Q1(data));
 					break;
 				}
 				else if (Choice == 5)
 				{
 					getData();
+					Console.WriteLine("Q2: {0}",Q2(data));
 					break;
 				}
 				else if (Choice == 6)
 				{
 					getData();
+					Console.WriteLine("Q2: {0}",Q3(data));
 					break;
 				}
 				else if (Choice == 7)
 				{
 					getData();
+					Console.WriteLine("Range: {0}", Range(data));
 					break;
 				}
 				else if (Choice == 8)
@@ -122,9 +148,9 @@ namespace MyApp
 		- Summation of Divisions
 
 	Mahmoud El Gohary:
-		- Q1
-		- Q2
-		- Q3
+		- Q1     ----> <DONE>
+		- Q2     ----> <DONE>
+		- Q3     ----> <DONE>
 		- P20
-		- Range
+		- Range  ----> <DONE>
 */

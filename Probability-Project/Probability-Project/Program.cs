@@ -7,7 +7,7 @@ namespace MyApp
 	{
 		public static List<double> data = new List<double>();
 		public static List<double> tempData = new List<double>();
-		
+
 		public static void clearLists() {
 			data.Clear();
 			tempData.Clear();
@@ -33,7 +33,7 @@ namespace MyApp
 		public static double Q1(List<double> arr) {
 			double arrMedian = Q2(arr);
 			foreach (double element in data){
-				if(element <= arrMedian)
+				if(element < arrMedian)
 					tempData.Add(element);
 				else
 					break;
@@ -44,12 +44,12 @@ namespace MyApp
 		public static double Q2(List<double> arr) {
 			if(arr.Count % 2 == 0) {	
 				double _50P = arr.Count *.50;
-				int index   = (int)Math.Round(_50P);
+				int index   = (int)Math.Round(_50P, MidpointRounding.AwayFromZero);
 				 return (arr[index-1]+arr[index])/2;
 
 			}else{
 				double _50P = arr.Count *.50;
-				int index   = (int)Math.Round(_50P);
+				int index   = (int)Math.Round(_50P, MidpointRounding.AwayFromZero);
 				return arr[index-1];
 			}
 		}
@@ -57,12 +57,13 @@ namespace MyApp
 		public static double Q3(List<double> arr) {
 			double arrMedian = Q2(arr);
 			foreach (double element in data){
-				if(element >= arrMedian)
+				if(element > arrMedian){
 					tempData.Add(element);
+				}
 				else
-					break;
+					continue;
 			} 
-			return Q2(tempData);;
+			return Q2(tempData);
 		}
 
 		public static void getData()

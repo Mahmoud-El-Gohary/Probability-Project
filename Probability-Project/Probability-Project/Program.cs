@@ -6,6 +6,7 @@ namespace MyApp
 	class App
 	{
 		public static List<double> data = new List<double>();
+		public static List<double> freq = new List<double>();
 		public static List<double> tempData = new List<double>();
 
 		public static void clearLists() {
@@ -65,7 +66,38 @@ namespace MyApp
 			} 
 			return Q2(tempData);
 		}
-
+		public static double popStandardDeviation(List<double> arr)
+        {
+			double sum = 0;
+			foreach (double element in data) { 
+				sum +=element;
+			}
+			double mean = sum/arr.Count;
+			sum = 0;
+			foreach (double element in arr) { 
+				sum += (element - mean)* (element-mean);
+			}
+			double variance = sum/arr.Count;
+			return Math.Sqrt(variance);
+		}
+		public static double samStandardDeviation(List<double> arr, List<double> freq)
+		{
+			double n = 0;
+			foreach (double f in freq) { n += f; }
+			double sum = 0;
+			for (int i =0;i<arr.Count;++i )
+			{
+				sum += arr[i] * freq[i];
+			}
+			double mean = sum / n;
+			sum = 0;
+			for (int i = 0; i < arr.Count; ++i)
+			{
+				sum += ((arr[i] - mean) * (arr[i] - mean)) * freq[i];
+			}
+			double variance = sum / (n-1);
+			return Math.Sqrt(variance);
+		}
 		public static void getData()
 		{
 			Console.Clear();
@@ -97,6 +129,27 @@ namespace MyApp
 					}
 				}
 			}
+			Console.WriteLine("Do you want to enter data frequency? (y for yes else for no)");
+			string ans = Console.ReadLine();
+			if(ans == "y")
+            {
+				for (int i = 0; i < data.Count; )
+				{
+					Console.WriteLine("Enter Frequency of: {0}", data[i]);
+					userInput = Console.ReadLine();
+					double SingleValue;
+					bool checkValue = double.TryParse(userInput, out SingleValue);
+					if (checkValue)
+					{
+						++i;
+						freq.Add(SingleValue);
+					}
+					else
+					{
+						Console.WriteLine("\n\t*** [ERROR] Please Enter a valid decimal number ****\n");
+					}
+				}
+            }
 		}
 		public static void Main(string[] args)
 		{
@@ -160,6 +213,10 @@ namespace MyApp
 				else if (Choice == 8)
 				{
 					getData();
+					if(freq.Count == 0)
+						Console.WriteLine("Standard Division: {0}", popStandardDeviation(data));
+					else
+						Console.WriteLine("Standard Division: {0}", samStandardDeviation(data,freq));
 					break;
 				}
 				else if (Choice == 9)

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nabil\\source\\repos\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
+      "projectUniqueName": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
       "projectName": "Probability-Project",
-      "projectPath": "C:\\Users\\nabil\\source\\repos\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
+      "projectPath": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
       "packagesPath": "C:\\Users\\nabil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nabil\\source\\repos\\Probability-Project\\Probability-Project\\obj\\",
+      "outputPath": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nabil\\AppData\\Roaming\\NuGet\\NuGet.Config",

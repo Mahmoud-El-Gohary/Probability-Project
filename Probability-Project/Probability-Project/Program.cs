@@ -32,6 +32,7 @@ namespace MyApp
 		}
 
 		public static double Q1(List<double> arr) {
+			tempData.Clear();
 			double arrMedian = Q2(arr);
 			foreach (double element in data){
 				if(element < arrMedian)

@@ -56,13 +56,12 @@ namespace MyApp
 		}
 
 		public static double Q3(List<double> arr) {
+			tempData.Clear();
 			double arrMedian = Q2(arr);
-			foreach (double element in data){
+			foreach (double element in arr){
 				if(element > arrMedian){
 					tempData.Add(element);
 				}
-				else
-					continue;
 			} 
 			return Q2(tempData);
 		}

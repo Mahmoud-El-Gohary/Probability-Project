@@ -151,6 +151,35 @@ namespace MyApp
 				}
             }
 		}
+		public static void GetOutlier(List<double> arr)
+		{
+			bool found = false;
+			// Q1 Formula
+			double MQ1 = Q1(arr);
+
+			// Q3 Formula
+			double MQ3 = Q3(arr);
+
+			// IQR (Interquartile range) Formula
+			double IQR = MQ3 - MQ1;
+
+			// High / Low Outlier
+			double Upperfence = MQ3 + (1.5 * IQR);
+			double Lowerfence = MQ1 - (1.5 * IQR);
+
+			foreach (double element in data)
+			{
+				if (element > Upperfence || element < Lowerfence)
+				{
+					Console.WriteLine("Outlier: {0}", element);
+					found = true;
+				}
+			}
+			if (found == false)
+			{
+				Console.WriteLine("No outlier");
+			}
+		}
 		public static void Main(string[] args)
 		{
 			while (true)
@@ -165,7 +194,8 @@ namespace MyApp
 				Console.WriteLine("\t[7]Range");
 				Console.WriteLine("\t[8]Standard Division");
 				Console.WriteLine("\t[9]Summation of Divisions");
-				Console.Write("Please Choose your operation form 1 to 9: ");
+				Console.WriteLine("\t[10]Outlier");
+				Console.Write("Please Choose your operation form 1 to 10: ");
 				int Choice;
 				bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
 				if (Choice == 1)
@@ -222,6 +252,12 @@ namespace MyApp
 				else if (Choice == 9)
 				{
 					getData();
+					break;
+				}
+				else if (Choice == 10)
+				{
+					getData();
+					GetOutlier(data);
 					break;
 				}
 				else

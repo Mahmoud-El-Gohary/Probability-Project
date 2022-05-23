@@ -242,7 +242,7 @@ namespace MyApp
 		- Mode
 
 	Nabil Salah:
-		- Standard Division
+		- Standard Division		----> <DONE>
 		- Summation of Divisions
 
 	Mahmoud El Gohary:

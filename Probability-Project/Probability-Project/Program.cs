@@ -242,8 +242,8 @@ namespace MyApp
 		- Mode
 
 	Nabil Salah:
-		- Standard Division		----> <DONE>
-		- Summation of Divisions
+		- Standard Deviation		----> <DONE>
+		- Summation of Deviation
 
 	Mahmoud El Gohary:
 		- Q1     ----> <DONE>

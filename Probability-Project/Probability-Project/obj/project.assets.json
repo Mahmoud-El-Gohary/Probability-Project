@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\nabil\\.nuget\\packages\\": {}
+    "C:\\Users\\medoa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
+      "projectUniqueName": "C:\\Users\\medoa\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
       "projectName": "Probability-Project",
-      "projectPath": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
-      "packagesPath": "C:\\Users\\nabil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nabil\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\obj\\",
+      "projectPath": "C:\\Users\\medoa\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\Probability-Project.csproj",
+      "packagesPath": "C:\\Users\\medoa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\medoa\\Source\\Repos\\Probability-Project\\Probability-Project\\Probability-Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nabil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\medoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

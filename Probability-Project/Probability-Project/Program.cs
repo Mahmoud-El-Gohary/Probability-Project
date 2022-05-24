@@ -8,7 +8,7 @@ namespace MyApp
 		public static List<double> data = new List<double>();
 		public static List<double> freq = new List<double>();
 		public static List<double> tempData = new List<double>();
-
+	
 		public static void clearLists() {
 			data.Clear();
 			tempData.Clear();
@@ -17,7 +17,29 @@ namespace MyApp
 		public static void Median(List<double> arr) {
 			Q2(arr);
 		}
+		public static double Mode(List<double> arr)
+		{
+			double freqI = 0;
+			double freqIV = 0;
+			for (int i = 0; i < arr.Count; i++)
+			{
+				int counter = 0;
 
+                for (int j = 0; j < arr.Count; j++)
+                { 
+				  if (arr[i] == arr[j])
+                  {
+						counter++;
+                  }
+                }
+				if (counter > freqI)
+                {
+			      freqI = counter;
+				  freqIV = arr[i];
+                }
+			}
+			return freqIV;
+		}
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
 			return range; 
@@ -225,6 +247,7 @@ namespace MyApp
 				else if (Choice == 2)
 				{
 					getData();
+                    Console.WriteLine("Mode: {0}",Mode(data));
 					break;
 				}
 				else if (Choice == 3)

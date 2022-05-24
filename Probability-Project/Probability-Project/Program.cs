@@ -14,7 +14,6 @@ namespace MyApp
 			tempData.Clear();
 		}
 
-
 		public static void Median(List<double> arr) {
 			Q2(arr);
 		}

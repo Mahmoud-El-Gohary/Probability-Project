@@ -81,6 +81,7 @@ namespace MyApp
 		}
 		public static double summationDeviation(List<double> arr)
         {
+			
 			double sum = 0;
 			foreach (double element in data) { 
 				sum +=element;
@@ -94,21 +95,45 @@ namespace MyApp
 		}
 		public static double samStandardDeviation(List<double> arr, List<double> freq)
 		{
-			double n = 0;
-			foreach (double f in freq) { n += f; }
-			double sum = 0;
-			for (int i =0;i<arr.Count;++i )
+			Console.WriteLine("Do you want to enter data frequency? (y for yes else for no)");
+			string userInput;
+			string ans = Console.ReadLine();
+			if (ans == "y")
 			{
-				sum += arr[i] * freq[i];
-			}
-			double mean = sum / n;
-			sum = 0;
-			for (int i = 0; i < arr.Count; ++i)
-			{
-				sum += ((arr[i] - mean) * (arr[i] - mean)) * freq[i];
-			}
-			double variance = sum / (n-1);
-			return Math.Sqrt(variance);
+				for (int i = 0; i < data.Count;)
+				{
+					Console.WriteLine("Enter Frequency of: {0}", data[i]);
+					userInput = Console.ReadLine();
+					double SingleValue;
+					bool checkValue = double.TryParse(userInput, out SingleValue);
+					if (checkValue)
+					{
+						++i;
+						freq.Add(SingleValue);
+					}
+					else
+					{
+						Console.WriteLine("\n\t*** [ERROR] Please Enter a valid decimal number ****\n");
+					}
+				}
+				double n = 0;
+				foreach (double f in freq) { n += f; }
+				double sum = 0;
+				for (int i = 0; i < arr.Count; ++i)
+				{
+					sum += arr[i] * freq[i];
+				}
+				double mean = sum / n;
+				sum = 0;
+				for (int i = 0; i < arr.Count; ++i)
+				{
+					sum += ((arr[i] - mean) * (arr[i] - mean)) * freq[i];
+				}
+				double variance = sum / (n - 1);
+				return Math.Sqrt(variance);
+            }
+            else { return popStandardDeviation(arr); }
+			
 		}
 		public static void getData()
 		{
@@ -141,27 +166,7 @@ namespace MyApp
 					}
 				}
 			}
-			Console.WriteLine("Do you want to enter data frequency? (y for yes else for no)");
-			string ans = Console.ReadLine();
-			if(ans == "y")
-            {
-				for (int i = 0; i < data.Count; )
-				{
-					Console.WriteLine("Enter Frequency of: {0}", data[i]);
-					userInput = Console.ReadLine();
-					double SingleValue;
-					bool checkValue = double.TryParse(userInput, out SingleValue);
-					if (checkValue)
-					{
-						++i;
-						freq.Add(SingleValue);
-					}
-					else
-					{
-						Console.WriteLine("\n\t*** [ERROR] Please Enter a valid decimal number ****\n");
-					}
-				}
-            }
+			
 		}
 		public static void GetOutlier(List<double> arr)
 		{
@@ -255,9 +260,12 @@ namespace MyApp
 				else if (Choice == 8)
 				{
 					getData();
-					if(freq.Count == 0)
+					Console.WriteLine("Do You Want it Sample or Population (1 for Sample, 2 Population,otherwise Exit)");
+					int num;
+					bool tr = int.TryParse(Console.ReadLine(), out num);
+					if(num == 2)
 						Console.WriteLine("Population Standard Deviation: {0}", popStandardDeviation(data));
-					else
+					else if(num == 1)
 						Console.WriteLine("Sample Standard Deviation: {0}", samStandardDeviation(data,freq));
 					break;
 				}
@@ -288,7 +296,7 @@ namespace MyApp
 	Ahmed Alaa:
 		- outlier		----> <DONE>
 		- Medean		----> <DONE>
-		- Mode
+		- Mode			----> <Still>
 
 	Nabil Salah:
 		- Standard Deviation		----> <DONE>

@@ -80,6 +80,19 @@ namespace MyApp
 			double variance = sum/arr.Count;
 			return Math.Sqrt(variance);
 		}
+		public static double summationDeviation(List<double> arr)
+        {
+			double sum = 0;
+			foreach (double element in data) { 
+				sum +=element;
+			}
+			double mean = sum/arr.Count;
+			sum = 0;
+			foreach (double element in arr) { 
+				sum += (element - mean);
+			}
+			return sum;
+		}
 		public static double samStandardDeviation(List<double> arr, List<double> freq)
 		{
 			double n = 0;
@@ -192,8 +205,8 @@ namespace MyApp
 				Console.WriteLine("\t[5]Q2");
 				Console.WriteLine("\t[6]Q3");
 				Console.WriteLine("\t[7]Range");
-				Console.WriteLine("\t[8]Standard Division");
-				Console.WriteLine("\t[9]Summation of Divisions");
+				Console.WriteLine("\t[8]Standard Deviation");
+				Console.WriteLine("\t[9]Summation of Deviation");
 				Console.WriteLine("\t[10]Outlier");
 				Console.Write("Please Choose your operation form 1 to 10: ");
 				int Choice;
@@ -244,14 +257,15 @@ namespace MyApp
 				{
 					getData();
 					if(freq.Count == 0)
-						Console.WriteLine("Standard Division: {0}", popStandardDeviation(data));
+						Console.WriteLine("Population Standard Deviation: {0}", popStandardDeviation(data));
 					else
-						Console.WriteLine("Standard Division: {0}", samStandardDeviation(data,freq));
+						Console.WriteLine("Sample Standard Deviation: {0}", samStandardDeviation(data,freq));
 					break;
 				}
 				else if (Choice == 9)
 				{
 					getData();
+					Console.WriteLine("Summation of Deviation: {0}", summationDeviation(data));
 					break;
 				}
 				else if (Choice == 10)
@@ -273,13 +287,13 @@ namespace MyApp
 
 /*
 	Ahmed Alaa:
-		- outlier
-		- Medean
+		- outlier		----> <DONE>
+		- Medean		----> <DONE>
 		- Mode
 
 	Nabil Salah:
 		- Standard Deviation		----> <DONE>
-		- Summation of Deviation
+		- Summation of Deviation	----> <DONE>
 
 	Mahmoud El Gohary:
 		- Q1     ----> <DONE>

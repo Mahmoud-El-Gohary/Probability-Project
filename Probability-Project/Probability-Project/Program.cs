@@ -8,15 +8,11 @@ namespace MyApp
 		public static List<double> data = new List<double>();
 		public static List<double> freq = new List<double>();
 		public static List<double> tempData = new List<double>();
-	
-		public static void clearLists() {
-			data.Clear();
-			tempData.Clear();
+
+		public static double Median(List<double> arr) {
+			return Q2(arr);
 		}
 
-		public static void Median(List<double> arr) {
-			Q2(arr);
-		}
 		public static SortedSet<double> Mode(List<double> arr)
 		{
 			SortedSet<double> list = new SortedSet<double>();
@@ -245,19 +241,13 @@ namespace MyApp
 				{
 					
 					getData();
-					Median(data);
+					Console.WriteLine("Median: {0}",Median(data));
 					break;
 				}
 				else if (Choice == 2)
 				{
 					getData();
-                    Console.WriteLine("Mode: ");
-					SortedSet<double> list = Mode(data);
-					foreach (double element in list)
-                    {
-						Console.Write(element);
-						Console.Write(" ");
-                    }
+					Console.WriteLine("Mode: {0}",String.Join(", ", Mode(data)));
 					break;
 				}
 				else if (Choice == 3)

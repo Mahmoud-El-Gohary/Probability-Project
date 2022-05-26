@@ -17,10 +17,10 @@ namespace MyApp
 		public static void Median(List<double> arr) {
 			Q2(arr);
 		}
-		public static double Mode(List<double> arr)
+		public static SortedSet<double> Mode(List<double> arr)
 		{
+			SortedSet<double> list = new SortedSet<double>();
 			double freqI = 0;
-			double freqIV = 0;
 			for (int i = 0; i < arr.Count; i++)
 			{
 				int counter = 0;
@@ -34,11 +34,15 @@ namespace MyApp
                 }
 				if (counter > freqI)
                 {
-			      freqI = counter;
-				  freqIV = arr[i];
+					list.Clear();
+                    list.Add(arr[i]);
+					freqI = counter;
+                }else if(counter == freqI)
+                {
+                    list.Add(arr[i]);
                 }
 			}
-			return freqIV;
+			return list;
 		}
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
@@ -247,7 +251,13 @@ namespace MyApp
 				else if (Choice == 2)
 				{
 					getData();
-                    Console.WriteLine("Mode: {0}",Mode(data));
+                    Console.WriteLine("Mode: ");
+					SortedSet<double> list = Mode(data);
+					foreach (double element in list)
+                    {
+						Console.Write(element);
+						Console.Write(" ");
+                    }
 					break;
 				}
 				else if (Choice == 3)

@@ -1,5 +1,8 @@
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
+
+
 
 namespace MyApp
 {
@@ -117,7 +120,7 @@ namespace MyApp
 		}
 		public static double samStandardDeviation(List<double> arr, List<double> freq)
 		{
-			Console.WriteLine("Do you want to enter data frequency? (y for yes else for no)");
+			Console.Write("Do you want to enter data frequency? (y for yes else for no) ");
 			string userInput;
 			string ans = Console.ReadLine();
 			if (ans == "y")
@@ -168,10 +171,6 @@ namespace MyApp
 				if (userInput == "q")
 				{
 					data.Sort();
-					Console.WriteLine("\nThis is the values you entered...");
-					Console.Write("data = { ");
-					Console.Write(String.Join(", ", data));
-					Console.WriteLine(" }");
 					break;
 				}
 				else
@@ -219,8 +218,43 @@ namespace MyApp
 				Console.WriteLine("No outlier");
 			}
 		}
-		public static void Main(string[] args)
+		public static void In_or_out(){
+			Console.WriteLine();
+			Console.WriteLine("Please Choose what do you want to do....");
+			Console.WriteLine("\t[1]proceed With the same data set");
+			Console.WriteLine("\t[2]proceed With a new data set");
+			Console.WriteLine("\t[3]exit software");
+			Console.Write("Please Choose 1, 2 or 3: ");
+			int Choice;
+			bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
+			if(ChoiceSuccess){
+				while(true){
+					if(Choice == 1){
+						Main();
+					}else if(Choice == 2){
+						data.Clear();
+						getData();
+						Main();
+					}else if(Choice == 3){
+						Environment.Exit(0);
+					}else{
+						Console.WriteLine("Please enter 1 or 2 or 3");
+					}
+				}
+			}else{
+				Console.WriteLine("Please enter a valid input");
+				In_or_out();
+			}
+		}
+		public static void printData(List<double> arr){
+			Console.WriteLine("\nThis is the values you entered...");
+			Console.Write("data = { ");
+			Console.Write(String.Join(", ", arr));
+			Console.WriteLine(" }");
+		}
+		public static void Main()
 		{
+			Console.Clear();
 			while (true)
 			{
 				Console.WriteLine("List of Choices..");
@@ -239,70 +273,97 @@ namespace MyApp
 				bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
 				if (Choice == 1)
 				{
-					
-					getData();
-					Console.WriteLine("Median: {0}",Median(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Median: {0}",Median(data));
+					In_or_out();	
 				}
 				else if (Choice == 2)
 				{
-					getData();
-					Console.WriteLine("Mode: {0}",String.Join(", ", Mode(data)));
-					break;
-				}
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Mode: {0}",String.Join(", ", Mode(data)));
+					In_or_out();				}
 				else if (Choice == 3)
 				{
-					getData();
-					Console.WriteLine("P20: {0}",P20(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> P20: {0}",P20(data));
+					In_or_out();
 				}
 				else if (Choice == 4)
 				{
-					getData();
-					Console.WriteLine("Q1: {0}",Q1(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Q1: {0}",Q1(data));
+					In_or_out();
 				}
 				else if (Choice == 5)
 				{
-					getData();
-					Console.WriteLine("Q2: {0}",Q2(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Q2: {0}",Q2(data));
+					In_or_out();
 				}
 				else if (Choice == 6)
 				{
-					getData();
-					Console.WriteLine("Q3: {0}",Q3(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Q3: {0}",Q3(data));
+					In_or_out();
 				}
 				else if (Choice == 7)
 				{
-					getData();
-					Console.WriteLine("Range: {0}", Range(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Range: {0}", Range(data));
+					In_or_out();
 				}
 				else if (Choice == 8)
 				{
-					getData();
-					Console.WriteLine("Do You Want it Sample or Population (1 for Sample, 2 Population,otherwise Exit)");
+					if (data.Count == 0){
+						getData();
+ 					}
+					Console.Write("Do You Want it Sample or Population (1 for Sample, 2 Population,otherwise Exit) ");
 					int num;
 					bool tr = int.TryParse(Console.ReadLine(), out num);
 					if(num == 2)
-						Console.WriteLine("Population Standard Deviation: {0}", popStandardDeviation(data));
+						Console.WriteLine("\n\t==> Population Standard Deviation: {0}", popStandardDeviation(data));
 					else if(num == 1)
-						Console.WriteLine("Sample Standard Deviation: {0}", samStandardDeviation(data,freq));
-					break;
+						Console.WriteLine("\n\t==> Sample Standard Deviation: {0}", samStandardDeviation(data,freq));
+					In_or_out();
 				}
 				else if (Choice == 9)
 				{
-					getData();
-					Console.WriteLine("Summation of Deviation: {0}", summationDeviation(data));
-					break;
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
+					Console.WriteLine("\n\t==> Summation of Deviation: {0}", summationDeviation(data));
+					In_or_out();
 				}
 				else if (Choice == 10)
 				{
-					getData();
+					if (data.Count == 0){
+						getData();
+ 					}
+ 					printData(data);
 					GetOutlier(data);
-					break;
+					In_or_out();
 				}
 				else
 				{
@@ -313,22 +374,3 @@ namespace MyApp
 		}
 	}
 }
-
-
-/*
-	Ahmed Alaa:
-		- outlier		----> <DONE>
-		- Medean		----> <DONE>
-		- Mode			----> <Still>
-
-	Nabil Salah:
-		- Standard Deviation		----> <DONE>
-		- Summation of Deviation	----> <DONE>
-
-	Mahmoud El Gohary:
-		- Q1     ----> <DONE>
-		- Q2     ----> <DONE>
-		- Q3     ----> <DONE>
-		- P20    ----> <DONE>
-		- Range  ----> <DONE>
-*/

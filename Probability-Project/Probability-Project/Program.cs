@@ -1,8 +1,5 @@
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
-
-
 
 namespace MyApp
 {
@@ -43,6 +40,7 @@ namespace MyApp
 			}
 			return list;
 		}
+
 		public static double Range(List<double> arr) {
 			double range = data[arr.Count-1] - data[0];
 			return range; 
@@ -90,6 +88,7 @@ namespace MyApp
 			} 
 			return Q2(tempData);
 		}
+
 		public static double popStandardDeviation(List<double> arr)
         {
 			double sum = 0;
@@ -104,6 +103,7 @@ namespace MyApp
 			double variance = sum/arr.Count;
 			return Math.Sqrt(variance);
 		}
+
 		public static double summationDeviation(List<double> arr)
         {
 			
@@ -118,6 +118,7 @@ namespace MyApp
 			}
 			return sum;
 		}
+
 		public static double samStandardDeviation(List<double> arr, List<double> freq)
 		{
 			Console.Write("Do you want to enter data frequency? (y for yes else for no) ");
@@ -160,6 +161,7 @@ namespace MyApp
             else { return popStandardDeviation(arr); }
 			
 		}
+
 		public static void getData()
 		{
 			Console.Clear();
@@ -170,8 +172,12 @@ namespace MyApp
 				userInput = Console.ReadLine();
 				if (userInput == "q")
 				{
-					data.Sort();
-					break;
+					if(data.Count == 0) {
+						Console.WriteLine("\n\t*** [WARNING] Your dataset is empty please enter some values ****\n");
+					}else{
+						data.Sort();
+						break;
+					}
 				}
 				else
 				{
@@ -183,42 +189,37 @@ namespace MyApp
 					}
 					else
 					{
-						Console.WriteLine("\n\t*** [ERROR] Please Enter a valid decimal number ****\n");
+						Console.WriteLine("\n\t*** [WARNING] Please Enter a valid decimal number ****\n");
 					}
 				}
 			}
 			
 		}
+
 		public static void GetOutlier(List<double> arr)
 		{
 			bool found = false;
-			// Q1 Formula
-			double MQ1 = Q1(arr);
-
-			// Q3 Formula
-			double MQ3 = Q3(arr);
-
-			// IQR (Interquartile range) Formula
-			double IQR = MQ3 - MQ1;
-
-			// High / Low Outlier
+			double MQ1 = Q1(arr);   // get Q1
+			double MQ3 = Q3(arr);   // get Q2
+			double IQR = MQ3 - MQ1; // Calcualte IQR
 			double Upperfence = MQ3 + (1.5 * IQR);
 			double Lowerfence = MQ1 - (1.5 * IQR);
-
-			foreach (double element in data)
+			foreach (double element in arr)
 			{
 				if (element > Upperfence || element < Lowerfence)
 				{
-					Console.WriteLine("Outlier: {0}", element);
+					Console.WriteLine("\t==> Outlier: {0}", element);
 					found = true;
 				}
 			}
 			if (found == false)
 			{
-				Console.WriteLine("No outlier");
+				Console.WriteLine("\n\t==> No outlier");
 			}
 		}
+
 		public static void In_or_out(){
+		while(true){
 			Console.WriteLine();
 			Console.WriteLine("Please Choose what do you want to do....");
 			Console.WriteLine("\t[1]proceed With the same data set");
@@ -226,9 +227,9 @@ namespace MyApp
 			Console.WriteLine("\t[3]exit software");
 			Console.Write("Please Choose 1, 2 or 3: ");
 			int Choice;
-			bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
+			string x = Console.ReadLine();
+			bool ChoiceSuccess = int.TryParse(x, out Choice);
 			if(ChoiceSuccess){
-				while(true){
 					if(Choice == 1){
 						Main();
 					}else if(Choice == 2){
@@ -238,39 +239,43 @@ namespace MyApp
 					}else if(Choice == 3){
 						Environment.Exit(0);
 					}else{
-						Console.WriteLine("Please enter 1 or 2 or 3");
+						Console.WriteLine("\n\t==> only [1, 2, 3] are allowd as inputs. <===\n",x);
 					}
-				}
+			
 			}else{
-				Console.WriteLine("Please enter a valid input");
+				Console.WriteLine("\n\t==> [WARNING] '{0}' is not a valid input. <===\n",x);
 				In_or_out();
+				}
 			}
 		}
+
 		public static void printData(List<double> arr){
 			Console.WriteLine("\nThis is the values you entered...");
 			Console.Write("data = { ");
 			Console.Write(String.Join(", ", arr));
 			Console.WriteLine(" }");
 		}
+
 		public static void Main()
 		{
 			Console.Clear();
 			while (true)
 			{
 				Console.WriteLine("List of Choices..");
-				Console.WriteLine("\t[1]Median");
-				Console.WriteLine("\t[2]Mode");
-				Console.WriteLine("\t[3]P20");
-				Console.WriteLine("\t[4]Q1");
-				Console.WriteLine("\t[5]Q2");
-				Console.WriteLine("\t[6]Q3");
-				Console.WriteLine("\t[7]Range");
-				Console.WriteLine("\t[8]Standard Deviation");
-				Console.WriteLine("\t[9]Summation of Deviation");
-				Console.WriteLine("\t[10]Outlier");
+				Console.WriteLine("\t[01] Median");
+				Console.WriteLine("\t[02] Mode");
+				Console.WriteLine("\t[03] P20");
+				Console.WriteLine("\t[04] Q1");
+				Console.WriteLine("\t[05] Q2");
+				Console.WriteLine("\t[06] Q3");
+				Console.WriteLine("\t[07] Range");
+				Console.WriteLine("\t[08] Standard Deviation");
+				Console.WriteLine("\t[09] Summation of Deviation");
+				Console.WriteLine("\t[10] Outlier");
 				Console.Write("Please Choose your operation form 1 to 10: ");
 				int Choice;
-				bool ChoiceSuccess = int.TryParse(Console.ReadLine(), out Choice);
+				string x = Console.ReadLine();
+				bool ChoiceSuccess = int.TryParse(x, out Choice);
 				if (Choice == 1)
 				{
 					if (data.Count == 0){
@@ -338,7 +343,7 @@ namespace MyApp
 					if (data.Count == 0){
 						getData();
  					}
-					Console.Write("Do You Want it Sample or Population (1 for Sample, 2 Population,otherwise Exit) ");
+					Console.Write("Do You Want it Sample or Population? (1 for Sample, 2 Population, otherwise Exit) ");
 					int num;
 					bool tr = int.TryParse(Console.ReadLine(), out num);
 					if(num == 2)
@@ -362,13 +367,13 @@ namespace MyApp
 						getData();
  					}
  					printData(data);
+ 					Console.WriteLine();
 					GetOutlier(data);
 					In_or_out();
 				}
 				else
 				{
-					Console.WriteLine("[WARNING] this isn't a valid input.");
-					Console.WriteLine("Intgers form 1 to 9 is a valid inputs");
+					Console.WriteLine("\n\t==> [WARNING] '{0}' isn't a valid input. <==\n",x);
 				}
 			}
 		}
